@@ -1,0 +1,103 @@
+-> Introduction To Testing Your App Lesson  
+   -> Quick Recap of Python Unit Testing  
+   -> 7 min to complete á By Brandon Gigous  
+
+-> Contents  
+   -> Introduction  
+   -> What is Unit Testing?  
+   -> Pytest and Unittest  
+   -> Example Test Code  
+   -> Testing with Pytest  
+   -> Summary: Python Flask Unit Testing  
+
+-> Introduction  
+   -> In this section, you'll learn the basics of unit testing and how it applies to Flask apps  
+   -> Testing might seem like an extra task, but it's crucial for finding bugs before they become problems  
+   -> Unit testing helps ensure that the individual components (functions, methods, etc.) of your application work correctly  
+   -> By catching issues early, testing saves time and reduces the risk of having serious bugs in production  
+
+-> What is Unit Testing?  
+   -> Unit testing is a software testing method that focuses on testing individual units of source code to ensure they work as expected  
+   -> A "unit" typically refers to the smallest testable part of an application, like a function or method  
+   -> The purpose of unit tests is to check that each part of the code performs its intended function  
+   -> Unit tests are written to verify if the functions or methods return correct results for given inputs  
+   -> The key idea is to isolate each unit and test it independently from the rest of the system  
+   -> If individual units pass their tests, you can be more confident that the application as a whole will function as expected  
+   -> Unit testing prevents bugs in the early stages of development, helping to avoid future problems that might arise from faulty code  
+   -> Unit testing also provides documentation on how a function is expected to behave  
+
+-> Pytest and Unittest  
+   -> There are two primary testing frameworks used in Python:  
+     -> `pytest`  
+     -> `unittest`  
+   -> `pytest` is the more advanced and widely used framework. It provides many features such as better assertion introspection, easy-to-write test cases, and powerful test discovery  
+   -> `pytest` has a simpler syntax and is often used for quick, simple tests  
+   -> `unittest` is Python's built-in testing framework, which is more verbose and object-oriented but still widely used  
+   -> Both frameworks can test Python code, but `pytest` is generally preferred due to its flexibility and ease of use  
+   -> To use `pytest`, you need to install it first. Run this command in your terminal:  
+     ```bash  
+     pip install pytest  
+     ```  
+
+-> Example Test Code:  
+   -> Let's see a simple example to understand how unit testing works with `pytest`:  
+     1. Create a Python file (e.g., `test_file.py`)  
+     2. In the file, write a function that you want to test  
+     3. Write a test function that calls the function and checks if the output is correct  
+     Example:  
+     ```python  
+     # contents of test_file.py  
+
+     def add(a, b):  
+         return a + b  
+
+     def test_add():  
+         assert add(3, 5) == 8  
+     ```  
+   -> The `add()` function simply adds two numbers, and the `test_add()` function checks if adding `3` and `5` results in `8`  
+   -> To run the test, navigate to the directory where `test_file.py` is located and run:  
+     ```bash  
+     pytest test_file.py  
+     ```  
+   -> `pytest` will automatically find the test, execute it, and display the results in the terminal  
+   -> The output will show whether the test passed or failed  
+
+-> Testing with Pytest  
+   -> If the function was modified, for example, if it incorrectly returned `a + b - 1`, the test would fail  
+   Example of a modified function:  
+   ```python  
+   def add(a, b):  
+       return a + b - 1  
+
+-> Running the same test with this modified code would produce the following output:
+=================== FAILURES ======================  
+test_file.py::test_add  
+assert 7 == 8  
+=================== 1 failed in 0.12s =====================  
+
+-> pytest shows that the test failed because add(3, 5) now returns 7 instead of the expected value 8
+-> The output includes details about the failure, such as the assertion error and the expected vs actual result
+-> This is a great way to catch errors during development, as it shows you exactly where your code went wrong
+
+-> Why Unit Testing is Important
+-> Unit testing helps ensure your code is reliable by testing individual parts in isolation
+-> By running tests frequently, you can identify bugs early and fix them quickly
+-> Unit tests are a form of "self-documentation" Ñ they show how each function is supposed to behave
+-> Tests also serve as a safety net when making changes to the codebase. If you modify a function and forget to update its tests, running the tests will help you spot any discrepancies
+-> In larger Flask apps, unit tests are essential for maintaining a stable and reliable application
+
+-> Best Practices for Unit Testing
+-> Write tests for each function, method, or unit of code
+-> Keep tests isolated from other parts of the application to avoid dependencies
+-> Name test functions with a consistent and descriptive naming convention (e.g., test_function_name)
+-> Make sure tests cover both expected and unexpected inputs to ensure robustness
+-> Test edge cases and error handling (e.g., what happens if the function receives None or an empty list?)
+-> Run your tests frequently to catch bugs early in the development process
+
+-> Summary: Python Flask Unit Testing
+-> Unit testing is essential for catching bugs early and ensuring the reliability of your Flask app
+-> pytest is a great testing framework for writing simple, powerful tests in Python
+-> Unit tests test individual units (such as functions) of your code to ensure they work as expected
+-> With pytest, you can quickly write tests and run them to verify that your code is functioning correctly
+-> Unit tests help improve code quality, increase confidence in your app, and make debugging easier
+-> In the next lesson, you will learn how to use pytest to test more complex Flask applications and set up tests for different parts of your app
