@@ -1,6 +1,5 @@
 -> Introduction To Testing Your App Lesson  
-   -> Quick Recap of Python Unit Testing  
-   -> 7 min to complete á By Brandon Gigous  
+   -> Quick Recap of Python Unit Testing   
 
 -> Contents  
    -> Introduction  
@@ -82,7 +81,7 @@ assert 7 == 8
 -> Why Unit Testing is Important
 -> Unit testing helps ensure your code is reliable by testing individual parts in isolation
 -> By running tests frequently, you can identify bugs early and fix them quickly
--> Unit tests are a form of "self-documentation" Ñ they show how each function is supposed to behave
+-> Unit tests are a form of "self-documentation" ' they show how each function is supposed to behave
 -> Tests also serve as a safety net when making changes to the codebase. If you modify a function and forget to update its tests, running the tests will help you spot any discrepancies
 -> In larger Flask apps, unit tests are essential for maintaining a stable and reliable application
 

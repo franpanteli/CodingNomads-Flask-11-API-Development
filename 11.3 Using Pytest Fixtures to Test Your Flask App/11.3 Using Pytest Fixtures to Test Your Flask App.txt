@@ -1,6 +1,5 @@
 -> Introduction To Testing Your App Lesson  
    -> Using Pytest Fixtures to Test Your Flask App  
-   -> 16 min to complete · By Brandon Gigous  
 
 -> Introduction  
    -> In this lesson, you will learn how to use Pytest fixtures to create reusable chunks of test code that can be easily used across multiple test functions in your Flask app  
@@ -59,22 +58,22 @@
      └── test_file_2.py  
      ```  
 
--> Setup and Teardown  
+-> Setup and Tear down  
    -> A fixture doesn’t just set up resources for your tests—it can also tear them down after the tests complete, ensuring the environment is cleaned up  
    -> This is particularly important when working with databases or files, as you want to make sure each test starts with a clean slate  
-   -> You can use the `yield` keyword in your fixture to handle teardown after the test function has completed  
-   -> Example of a fixture with setup and teardown:  
+   -> You can use the `yield` keyword in your fixture to handle tear down after the test function has completed  
+   -> Example of a fixture with setup and tear down:  
      ```python  
      @pytest.fixture  
      def order():  
          diner_order = DinerOrder()  # setup  
          yield diner_order  # provide the order to the test  
-         diner_order.cleanup()  # teardown  
+         diner_order.cleanup()  # tear down  
      ```  
    -> In this example, the fixture sets up the `diner_order` object and then, after the test has finished, it cleans up by calling `cleanup()`  
 
 -> Rethinking the Database Insertion Test  
-   -> Now that you've learned about fixtures, you can refactor previous database-related tests to use fixtures for setup and teardown  
+   -> Now that you've learned about fixtures, you can refactor previous database-related tests to use fixtures for setup and tear down  
    -> Example of a fixture that sets up a Flask app instance and database:  
      ```python  
      @pytest.fixture(scope='module')  
@@ -86,7 +85,7 @@
          ctx.push()  
          db.create_all()  # setup  
          yield test_client  # provide the app's test client to the test function  
-         db.session.remove()  # teardown  
+         db.session.remove()  # tear down  
          db.drop_all()  
          ctx.pop()  
      ```  
@@ -116,5 +115,5 @@
    -> They can be decorated with `@pytest.fixture` and are passed automatically to test functions  
    -> Fixtures have different scopes: function, class, module, session  
    -> `conftest.py` allows fixtures to be shared across multiple test files in the same directory  
-   -> Fixtures can handle both setup and teardown with `yield`  
+   -> Fixtures can handle both setup and tear down with `yield`  
    -> You learned how to create a fixture to set up and tear down the Flask app context and test database  

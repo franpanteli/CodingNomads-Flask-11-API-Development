@@ -1,6 +1,5 @@
 -> Introduction To Testing Your App Lesson  
    -> Set Up Pytest for Your Flask Project  
-   -> 19 min to complete · By Brandon Gigous  
 
 -> Contents  
    -> Introduction  
