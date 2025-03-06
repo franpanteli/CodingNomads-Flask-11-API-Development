@@ -1,46 +1,46 @@
--> Introduction To Testing Your App Lesson  
-   -> Set Up Pytest for Your Flask Project  
+-> introduction to testing your app lesson  
+   -> set up pytest for your flask project  
 
--> Contents  
-   -> Introduction  
-   -> What Is Python Pytest?  
-   -> Test Discovery  
-   -> Testing Your Flask App  
-   -> First Test  
-   -> Flask Test Configuration  
-   -> Additional App Creation Test  
-   -> Database Insertion Test  
-   -> Getting Organised  
-   -> Test Setup  
-   -> Starting Your Tests  
-   -> VS Code Launch Configuration  
-   -> Summary: Python Pytest  
+-> contents  
+   -> introduction  
+   -> what is python pytest?  
+   -> test discovery  
+   -> testing your flask app  
+   -> first test  
+   -> flask test configuration  
+   -> additional app creation test  
+   -> database insertion test  
+   -> getting organised  
+   -> test setup  
+   -> starting your tests  
+   -> vs code launch configuration  
+   -> summary: python pytest  
 
--> Introduction  
-   -> In this lesson, you will learn how to use Python pytest to write unit tests for your Flask app  
-   -> This will be a mini crash course that covers the basics of getting started with pytest and testing a Flask application  
-   -> By the end of the lesson, you should be able to set up and write basic tests for your app  
+-> introduction  
+   -> in this lesson, you will learn how to use python pytest to write unit tests for your flask app  
+   -> this will be a mini crash course that covers the basics of getting started with pytest and testing a flask application  
+   -> by the end of the lesson, you should be able to set up and write basic tests for your app  
 
--> What Is Python Pytest?  
-   -> Pytest is a powerful testing framework for Python, primarily used for writing unit tests  
-   -> What makes Pytest special is that it is simple to use, highly extensible, and requires minimal boilerplate code  
-   -> Pytest allows you to write tests that are both expressive and readable, even for beginners  
-   -> It can be used to write small unit tests or more complex functional tests for your applications or libraries  
+-> what is python pytest?  
+   -> pytest is a powerful testing framework for python, primarily used for writing unit tests  
+   -> what makes pytest special is that it is simple to use, highly extensible, and requires minimal boilerplate code  
+   -> pytest allows you to write tests that are both expressive and readable, even for beginners  
+   -> it can be used to write small unit tests or more complex functional tests for your applications or libraries  
 
--> Test Discovery  
-   -> Pytest is designed to make testing easy by automatically discovering test files and test functions  
-   -> By default, it looks for files that start with `test_` (e.g., `test_app.py`)  
-   -> It then looks inside these files for functions that begin with `test_` (e.g., `test_app_creation()`)  
-   -> This automatic discovery of tests reduces the need for you to manually specify which tests to run, making the process more efficient  
+-> test discovery  
+   -> pytest is designed to make testing easy by automatically discovering test files and test functions  
+   -> by default, it looks for files that start with `test_` (e.g., `test_app.py`)  
+   -> it then looks inside these files for functions that begin with `test_` (e.g., `test_app_creation()`)  
+   -> this automatic discovery of tests reduces the need for you to manually specify which tests to run, making the process more efficient  
 
--> Testing Your Flask App  
-   -> The next step is to test your Flask app using pytest. You’ll be writing simple tests to check that your Flask application is working as expected  
-   -> In this section, you will create your first test to ensure that your app is being created correctly  
+-> testing your flask app  
+   -> the next step is to test your flask app using pytest. you’ll be writing simple tests to check that your flask application is working as expected  
+   -> in this section, you will create your first test to ensure that your app is being created correctly  
 
--> First Test  
-   -> The first thing you need to do is create a test file. Name it `test_app.py` and place it in your project's root directory  
-   -> This test file will import your Flask app and verify that it is created successfully when using the app factory  
-   -> A simple test might look like this:  
+-> first test  
+   -> the first thing you need to do is create a test file. name it `test_app.py` and place it in your project's root directory  
+   -> this test file will import your flask app and verify that it is created successfully when using the app factory  
+   -> a simple test might look like this:  
      ```python  
      from app import create_app  
      def test_app_creation():  
@@ -48,19 +48,19 @@
          assert app  
          assert app.config['TESTING']  
      ```  
-   -> In this example:  
-      -> `create_app('testing')` creates an instance of your Flask app using the 'testing' configuration  
-      -> The `assert` statements check that the app is successfully created and that the `TESTING` configuration is enabled  
+   -> in this example:  
+      -> `create_app('testing')` creates an instance of your flask app using the 'testing' configuration  
+      -> the `assert` statements check that the app is successfully created and that the `TESTING` configuration is enabled  
 
--> Flask Test Configuration  
-   -> Before running your tests, you need to configure your Flask app to use a test database  
-   -> Set the `TESTING` configuration variable to `True` to enable testing mode in Flask  
-   -> Also, ensure that your app uses a different database URL (e.g., `data-test.sqlite`) for testing purposes, so as not to interfere with your production database  
+-> flask test configuration  
+   -> before running your tests, you need to configure your flask app to use a test database  
+   -> set the `TESTING` configuration variable to `True` to enable testing mode in flask  
+   -> also, ensure that your app uses a different database URL (e.g., `data-test.sqlite`) for testing purposes, so as not to interfere with your production database  
 
--> Additional App Creation Test  
-   -> In addition to testing the app creation, it’s important to test the availability of the `current_app` after the app context has been pushed  
-   -> You can also check whether the `TESTING` configuration has been set correctly in the app  
-   -> Example code:  
+-> additional app creation test  
+   -> in addition to testing the app creation, it’s important to test the availability of the `current_app` after the app context has been pushed  
+   -> you can also check whether the `TESTING` configuration has been set correctly in the app  
+   -> example code:  
      ```python  
      from flask import current_app  
      def test_current_app():  
@@ -69,14 +69,14 @@
          assert current_app  
          assert current_app.config['TESTING']  
      ```  
-   -> In this test:  
-      -> The `current_app` is checked to make sure it refers to the app instance you just created  
-      -> You confirm that the `TESTING` configuration is still set to `True`  
+   -> in this test:  
+      -> the `current_app` is checked to make sure it refers to the app instance you just created  
+      -> you confirm that the `TESTING` configuration is still set to `True`  
 
--> Database Insertion Test  
-   -> Once your app and configuration tests are passing, you can move on to more complex tests, such as testing database operations  
-   -> In this test, you'll verify that the correct test database is being used and perform a simple insertion into the database  
-   -> Example code:  
+-> database insertion test  
+   -> once your app and configuration tests are passing, you can move on to more complex tests, such as testing database operations  
+   -> in this test, you'll verify that the correct test database is being used and perform a simple insertion into the database  
+   -> example code:  
      ```python  
      from app import db  
      from app.models import User  
@@ -92,19 +92,19 @@
          db.session.remove()  
          db.drop_all()  
      ```  
-   -> In this example:  
-      -> The test checks if the `SQLALCHEMY_DATABASE_URI` is correctly pointing to the test database (`data-test.sqlite`)  
-      -> It creates the necessary tables in the test database, adds a user to the `User` model, commits the transaction, and then cleans up by dropping the tables  
-      -> The important part is cleaning up the database after the test (`db.session.remove()` and `db.drop_all()`) so that it remains in a known state for subsequent tests  
+   -> in this example:  
+      -> the test checks if the `SQLALCHEMY_DATABASE_URI` is correctly pointing to the test database (`data-test.sqlite`)  
+      -> it creates the necessary tables in the test database, adds a user to the `User` model, commits the transaction, and then cleans up by dropping the tables  
+      -> the important part is cleaning up the database after the test (`db.session.remove()` and `db.drop_all()`) so that it remains in a known state for subsequent tests  
 
--> Getting Organised  
-   -> As you write more tests, you'll find that your test code can become repetitive and hard to maintain  
-   -> To avoid duplicating code and to keep things organised, you can group tests by type (e.g., unit tests, functional tests) into separate directories  
-   -> You can also use **fixtures** (covered in a later lesson) to create reusable pieces of setup code that can be shared between tests  
-   -> It's a good idea to keep your test files organised to make them easier to manage as your app grows  
+-> getting organised  
+   -> as you write more tests, you'll find that your test code can become repetitive and hard to maintain  
+   -> to avoid duplicating code and to keep things organised, you can group tests by type (e.g., unit tests, functional tests) into separate directories  
+   -> you can also use **fixtures** (covered in a later lesson) to create reusable pieces of setup code that can be shared between tests  
+   -> it's a good idea to keep your test files organised to make them easier to manage as your app grows  
 
--> Test Setup  
-   -> Here's an example of how your project directory structure might look, including your `tests/` folder for tests:  
+-> test setup  
+   -> here's an example of how your project directory structure might look, including your `tests/` folder for tests:  
      ```
      app/
      └── ...  
@@ -115,20 +115,20 @@
      ├── test_app.py  
      └── ...  
      ```  
-   -> The `tests/` folder holds all of your unit tests  
+   -> the `tests/` folder holds all of your unit tests  
    -> `conftest.py` is a configuration file that is useful when you want to set up common test fixtures that can be shared across multiple test files  
 
--> Starting Your Tests  
-   -> Once you have organised your test files, you'll need to tell pytest where to find them  
-   -> You can do this by running pytest from the command line with the following command:  
+-> starting your tests  
+   -> once you have organised your test files, you'll need to tell pytest where to find them  
+   -> you can do this by running pytest from the command line with the following command:  
      ```
      python -m pytest tests/
      ```  
-   -> This will instruct pytest to look in the `tests/` folder for any files that match the test discovery rules  
+   -> this will instruct pytest to look in the `tests/` folder for any files that match the test discovery rules  
 
--> VS Code Launch Configuration  
-   -> If you're using Visual Studio Code, you can streamline your testing workflow by adding a launch configuration for pytest  
-   -> Example configuration in VS Code:  
+-> vs code launch configuration  
+   -> if you're using visual studio code, you can streamline your testing workflow by adding a launch configuration for pytest  
+   -> example configuration in vs code:  
      ```json  
      {  
          "name": "Python: Test All",  
@@ -142,14 +142,14 @@
          "args": ["${workspaceFolder}/tests/", "--show-capture=stdout"]  
      }  
      ```  
-   -> This configuration allows you to run your tests directly from VSCode, and it also ensures that the test database is correctly set up  
+   -> this configuration allows you to run your tests directly from vscode, and it also ensures that the test database is correctly set up  
 
--> Summary: Python Pytest  
-   -> In this lesson, you’ve successfully learned how to set up and use Python pytest with Flask  
-   -> You’ve:  
-      -> Used Pytest for unit testing  
-      -> Understood test discovery, where pytest automatically identifies test files and functions based on naming conventions  
-      -> Written your first Flask test to check if the app is created successfully  
-      -> Tested database interactions by verifying that data is inserted correctly and cleaned up after tests  
-      -> Organised your tests and set up a VS Code launch configuration for streamlined testing  
-   -> With this foundation, you are now ready to expand your testing knowledge by learning about fixtures and more advanced testing strategies in the next lessons  
+-> summary: python pytest  
+   -> in this lesson, you’ve successfully learned how to set up and use python pytest with flask  
+   -> you’ve:  
+      -> used pytest for unit testing  
+      -> understood test discovery, where pytest automatically identifies test files and functions based on naming conventions  
+      -> written your first flask test to check if the app is created successfully  
+      -> tested database interactions by verifying that data is inserted correctly and cleaned up after tests  
+      -> organised your tests and set up a vs code launch configuration for streamlined testing  
+   -> with this foundation, you are now ready to expand your testing knowledge by learning about fixtures and more advanced testing strategies in the next lessons  
